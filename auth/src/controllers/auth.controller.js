@@ -1,6 +1,7 @@
 const userModel = require('../models/user.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
+const redis = require("../db/redis");
 
 const registerUser = async (req, res) => {
 
@@ -115,7 +116,7 @@ const loginUser = async (req, res) => {
                 addresses: user.addresses
             }
         });
-    } 
+    }
     catch (err) {
         console.error('Error in loginUser:', err);
         return res.status(500).json({ message: 'Internal server error' });
@@ -129,8 +130,27 @@ const getCurrentUser = async (req, res) => {
     })
 }
 
+const logoutUser = async (req, res) => {
+
+    const token = req.cookies.token;
+
+    if (token) {
+        // blacklist
+        await redis.set(`blacklist:${token}`, 'true', 'EX', 24 * 60 * 60)
+    }
+
+    res.clearCookie('token', {
+        httpOnly: true,
+        secure: true
+    })
+
+    return res.status(200).json({ message: "Logged out successfully" });
+
+}
+
 module.exports = {
     registerUser,
     loginUser,
-    getCurrentUser
+    getCurrentUser,
+    logoutUser
 };
