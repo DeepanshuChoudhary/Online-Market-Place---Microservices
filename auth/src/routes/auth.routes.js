@@ -17,4 +17,11 @@ router.get('/me', authMiddleware.authMiddleware, authController.getCurrentUser)
 // GET /api/auth/logout
 router.get('/logout', authController.logoutUser);
 
+// GET /users/me/addresses
+router.get('/users/me/addresses', authMiddleware.authMiddleware, authController.getUserAddresses);
+
+//  POST /users/me/addresses
+router.post('/users/me/addresses', validators.addUserAddressValidations, authMiddleware.authMiddleware, authController.addUserAddress);
+
+
 module.exports = router;
