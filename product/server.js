@@ -4,7 +4,6 @@ const connectDB = require('./src/db/db');
 
 connectDB();
 
-
 app.listen(3001, () => {
-    console.log('Product server listening on port 3001');
+    console.log("Product service are started at 3001");
 })
