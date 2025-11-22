@@ -6,8 +6,7 @@ const productSchema = new mongoose.Schema({
         required: true
     },
     description: {
-        type: String,
-        required: true
+        type: String
     },
     price: {
         amount: {
@@ -16,8 +15,8 @@ const productSchema = new mongoose.Schema({
         },
         currency: {
             type: String,
-            enum: [ "USD", "INR" ],
-            default: "INR"
+            enum: ['USD', 'INR'],
+            default: 'INR'
         }
     },
     seller: {
@@ -33,4 +32,4 @@ const productSchema = new mongoose.Schema({
     ]
 })
 
-module.exports = mongoose.model('product', productSchema);
+module.exports = mongoose.model('Product', productSchema);
