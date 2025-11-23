@@ -44,7 +44,7 @@ const createProduct = async (req, res) => {
         })
 
     }
-    catch(err) {
+    catch (err) {
         console.error('Create product error', err);
         return res.status(500).json({
             message: 'Internal server error'
@@ -115,8 +115,30 @@ const getProducts = async (req, res) => {
     }
 };
 
+const getProductById = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid product id' });
+        }
+
+        const product = await productModel.findById(id);
+
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+
+        return res.status(200).json({ data: product });
+
+    } catch (err) {
+        return res.status(500).json({ message: "Internal server error" });
+    }
+};
+
 
 module.exports = {
     createProduct,
-    getProducts
+    getProducts,
+    getProductById
 }
