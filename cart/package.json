@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --runInBand",
     "dev": "npx nodemon server.js",
     "start": "node server.js"
   },
@@ -16,8 +16,12 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-validator": "^7.3.1",
+    "jest": "^30.2.0",
     "jsonwebtoken": "^9.0.2",
     "mogoose": "^0.0.1-security",
     "mongoose": "^9.0.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.4"
   }
 }

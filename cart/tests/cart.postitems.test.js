@@ -58,7 +58,7 @@ describe('POST /api/cart/items', () => {
         expect(res.body.message).toBe('Item added to cart');
         expect(res.body.cart).toBeDefined();
         expect(res.body.cart.items).toHaveLength(1);
-        expect(res.body.cart.items[0]).toMatchObject({ productId, quantity: 2 });
+        expect(res.body.cart.items[ 0 ]).toMatchObject({ productId, quantity: 2 });
     });
 
     test('increments quantity when item already exists', async () => {
@@ -78,7 +78,7 @@ describe('POST /api/cart/items', () => {
 
         expect(res.status).toBe(200);
         expect(res.body.cart.items).toHaveLength(1);
-        expect(res.body.cart.items[0]).toMatchObject({ productId, quantity: 5 });
+        expect(res.body.cart.items[ 0 ]).toMatchObject({ productId, quantity: 5 });
     });
 
     test('validation error for invalid productId', async () => {
