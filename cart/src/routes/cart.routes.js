@@ -9,5 +9,16 @@ router.post("/items",
     createAuthMiddleware(["user"]), cartController.addItemToCart
 )
 
+router.get('/',
+    createAuthMiddleware([ 'user' ]),
+    cartController.getCart
+);
+
+router.patch('/items/:productId',
+    validation.validateUpdateCartItem,
+    createAuthMiddleware([ "user" ]),
+    cartController.updateItemQuantity
+)
+
 
 module.exports = router

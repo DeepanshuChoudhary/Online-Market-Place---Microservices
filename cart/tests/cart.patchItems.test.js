@@ -43,7 +43,7 @@ describe('PATCH /api/cart/items/:productId', () => {
     const otherProductId = generateObjectId();
 
     beforeEach(() => {
-        CartModel.__reset();
+        CartModel.__reset()     ;
     });
 
     test('updates quantity of existing item', async () => {
