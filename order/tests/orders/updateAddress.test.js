@@ -19,7 +19,7 @@ describe('PATCH /api/orders/:id/address — Update delivery address prior to pay
 
         const order = await orderModel.create({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe',
+            user: '692a7b172da424ea39037818',
             items: [],
             status: 'PENDING',
             totalPrice: {
@@ -60,7 +60,7 @@ describe('PATCH /api/orders/:id/address — Update delivery address prior to pay
 
         const order = await orderModel.create({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe',
+            user: '692a7b172da424ea39037818',
             items: [],
             status: 'SHIPPED',
             totalPrice: {
@@ -89,7 +89,7 @@ describe('PATCH /api/orders/:id/address — Update delivery address prior to pay
     it('returns 400 when address is invalid', async () => {
         const order = await orderModel.create({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe',
+            user: '692a7b172da424ea39037818',
             items: [],
             status: 'PENDING',
             totalPrice: {

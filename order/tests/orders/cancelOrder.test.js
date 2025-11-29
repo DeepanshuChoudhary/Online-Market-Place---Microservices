@@ -15,7 +15,7 @@ describe('POST /api/orders/:id/cancel — Buyer-initiated cancel while rules app
 
         const order = new orderModel({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe', // ensure this matches auth user
+            user: '692a7b172da424ea39037818', // ensure this matches auth user
             status: 'PENDING',
             items: [
                 {
@@ -53,7 +53,7 @@ describe('POST /api/orders/:id/cancel — Buyer-initiated cancel while rules app
 
         const order = new orderModel({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe', // ensure this matches auth user
+            user: '692a7b172da424ea39037818', // ensure this matches auth user
             status: 'SHIPPED',
             items: [
                 {
@@ -87,7 +87,7 @@ describe('POST /api/orders/:id/cancel — Buyer-initiated cancel while rules app
 
         const order = new orderModel({
             _id: orderId,
-            user: '68bc6369c17579622cbdd9fe',
+            user: '692a7b172da424ea39037818',
             items: [],
             status: 'PENDING',
             totalPrice: {
