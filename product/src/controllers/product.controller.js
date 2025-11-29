@@ -52,6 +52,7 @@ const createProduct = async (req, res) => {
     }
 }
 
+
 // const getProducts = async (req, res) => {
 
 //     const { q, minprice, maxprice, skip = 0, limit = 20 } = req.query;

@@ -87,12 +87,12 @@ const loginUser = async (req, res) => {
         const user = await userModel.findOne({ $or: [{ email }, { username }] }).select('+password');
 
         if (!user) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Invalid User credentials' });
         }
 
         const isMatch = await bcrypt.compare(password, user.password || '');
         if (!isMatch) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            return res.status(401).json({ message: 'Invalid Password credentials' });
         }
 
         const token = jwt.sign({
