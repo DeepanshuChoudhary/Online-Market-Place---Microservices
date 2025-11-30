@@ -17,7 +17,7 @@ describe('POST /api/orders — Create order from current cart', () => {
         state: 'CA',
         pincode: '90210',
         country: 'USA',
-    };
+    };  
 
     beforeEach(() => {
         // >>> CHANGED: reset axios mocks and restore any mocked model functions
