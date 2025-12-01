@@ -4,10 +4,10 @@ const paymentRoutes = require('./routes/payment.routes')
 
 const app = express();
 
-app.use(express())
+app.use(express.json())
 app.use(cookieParser());
 
-app.use('/payments', paymentRoutes);
+app.use('/api/payments', paymentRoutes);
 
 
 module.exports = app;
