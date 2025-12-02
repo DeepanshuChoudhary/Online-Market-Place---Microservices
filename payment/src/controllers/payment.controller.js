@@ -18,10 +18,7 @@ const createPayment = async (req, res) => {
 
         const price = orderResponse.data.order.totalPrice;
 
-        const payment = await paymentModel.create({
-            order: orderId,
-            
-        })
+        
 
     }
     catch(err) {
