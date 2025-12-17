@@ -38,6 +38,6 @@ const sendEmail = async (to, subject, text, html) => {
     }
 }
 
-sendEmail("nagardeepanshu1998@gmail.com", "Test Subject", "This is a test email", "<b>This is a test email</b>");
+// sendEmail("deepanshuengineeyt@gmail.com", "Test Subject", "This is a test email", "<b>This is a test email</b>");
 
-module.exports = sendEmail;
+module.exports = {sendEmail};

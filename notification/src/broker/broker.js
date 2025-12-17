@@ -36,9 +36,9 @@ const subscribeToQueue = async (queueName, callback) => {
 
     await channel.assertQueue(queueName, { durable: true })
 
-    channel.consumer(queueName, async (msg) => {
+    channel.consume(queueName, async (msg) => {
         if(msg !== null) {
-            const data = JSON.parser(msg.content.toString());
+            const data = JSON.parse(msg.content.toString());
             await callback(data);
             channel.ack(msg);
         }

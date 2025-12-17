@@ -2,6 +2,7 @@ const userModel = require('../models/user.model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 const redis = require("../db/redis");
+const { publishToQueue } = require('../broker/broker');
 
 const mongoose = require('mongoose')
 
@@ -43,6 +44,14 @@ const registerUser = async (req, res) => {
         // if(!process.env.JWT_SECRET) {
         //     console.warn('JWT_SECRET is not set in env');
         // }
+
+        //publish user created event to RabbitMQ, 
+        await publishToQueue('AUTH_NOTIFICATION.USER_CREATED', {
+            id: user._id,
+            username: user.username,
+            email: user.email,
+            fullName: user.fullName
+        })
 
         // console.log('signing jwt token') 
         const token = jwt.sign({
