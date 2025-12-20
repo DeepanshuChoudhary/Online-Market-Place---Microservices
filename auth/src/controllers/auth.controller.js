@@ -46,12 +46,16 @@ const registerUser = async (req, res) => {
         // }
 
         //publish user created event to RabbitMQ, 
-        await publishToQueue('AUTH_NOTIFICATION.USER_CREATED', {
-            id: user._id,
-            username: user.username,
-            email: user.email,
-            fullName: user.fullName
-        })
+        await Promise.all([
+            publishToQueue('AUTH_NOTIFICATION.USER_CREATED', {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                fullName: user.fullName
+            }),
+    
+            publishToQueue('AUTH_SELLER_DASHBOARD.USER_CREATED', user)
+        ])
 
         // console.log('signing jwt token') 
         const token = jwt.sign({
