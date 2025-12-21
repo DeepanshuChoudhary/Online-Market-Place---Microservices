@@ -43,6 +43,10 @@ const createPayment = async (req, res) => {
             }
         })
 
+        await Promise.all([
+            publishToQueue('PAYMENT_SELLER_DASHBOARD.PAYMENT_CREATED', payment)
+        ])
+
         return res.status(201).json({
             message: "Payment initiated", payment
         })

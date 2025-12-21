@@ -1,5 +1,6 @@
 const orderModel = require("../models/order.model");
 const axios = require('axios');
+const { publishToQueue } = require('../broker/broker');
 
 const createOrder = async (req, res) => {
 
@@ -70,6 +71,14 @@ const createOrder = async (req, res) => {
                 country: req.body.shippingAddress.country
             }
         })
+
+        await Promise.all ([
+            publishToQueue('ORDER_SELLER_DASHBOARD.ORDER_CREATES', order),
+            // publishToQueue('ORDER_NOTIFICATION_SELLER_DASHBOARD', {
+            //     user: user.id,
+            //     items: orderItems,
+            // })
+        ])
 
         res.status(201).json({ order })
 
