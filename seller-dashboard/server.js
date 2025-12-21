@@ -8,7 +8,7 @@ connectDB();
 
 connect().then(() => {
     listener();
-})
+}) 
 
 app.listen(3007, () => {
     console.log("Seller Dashboard server running on port 3007")
