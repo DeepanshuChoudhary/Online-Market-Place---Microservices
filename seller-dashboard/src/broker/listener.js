@@ -10,7 +10,7 @@ module.exports = async function() {
         await userModel.create(user);
     })
 
-    subscribeToQueue('PRODUCT_SELLER_DASHBOARD.USER_CREATED', async (product) => {
+    subscribeToQueue('PRODUCT_NOTIFICATION.PRODUCT_CREATED', async (product) => {
         await productModel.create(product);
     })
 
